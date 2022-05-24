@@ -2,7 +2,7 @@
 <nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
     <div class="navbar-wrapper ">
         <div class="navbar-brand header-logo">
-            <a href="{{url('/')}}" class="b-brand">
+            <a href="{{url('/dashboard')}}" class="b-brand">
                 <img src="../assets/images/logo.svg" alt="" class="logo images">
                 <img src="../assets/images/logo-icon.svg" alt="" class="logo-thumb images">
             </a>
@@ -14,7 +14,7 @@
 
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('/')}}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Tableau de bord</span></a>
+                    <a href="{{url('/dashboard')}}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Tableau de bord</span></a>
                 </li>
 
                 <li class="nav-item ">
