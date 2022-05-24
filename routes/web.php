@@ -14,5 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('partials.app');
 });
+Route::get('/produits', function () {
+    return view('produits.liste-produit');
+});
+Route::get('/stocksPoulets', function () {
+    return view('stock-poules.liste-stock');
+});
+Route::get('/materiels', function () {
+    return view('materiels.liste-materiel');
+});
+Route::get('/poulaillers', function () {
+    return view('poulaillers.liste-poulailler');
+});
+
