@@ -29,6 +29,9 @@
                 <li class="nav-item ">
                     <a href="{{url('materiels')}}" class="nav-link"><span class="pcoded-micon"><i class="fas fa-cubes"></i></span><span class="pcoded-mtext">Materiels</span></a>
                 </li>
+                <li class="nav-item ">
+                    <a href="{{url('gerants')}}" class="nav-link"><span class="pcoded-micon"><i class="fas fa-user-alt"></i></span><span class="pcoded-mtext">Gerant</span></a>
+                </li>
             </ul>
 
         </div>

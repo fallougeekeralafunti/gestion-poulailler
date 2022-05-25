@@ -28,6 +28,9 @@ Route::get('/materiels', function () {
 Route::get('/poulaillers', function () {
     return view('poulaillers.liste-poulailler');
 });
+Route::get('/gerants', function () {
+    return view('gerant.liste-gerant');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
