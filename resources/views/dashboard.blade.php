@@ -131,7 +131,7 @@
 										</div>
 									</div>
 								</div>
-							
+
 								<div class="col-xl-8 col-md-6">
 									<div class="card table-card">
 										<div class="card-header">
@@ -234,7 +234,7 @@
 	<!-- Required Js -->
 	<script src="{{asset('assets/js/vendor-all.min.js')}}"></script>
 	<script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-	<script src="{{asset('assets/js/pcoded.min.js')}}"></script>
+	{{-- <script src="{{asset('assets/js/pcoded.min.js')}}"></script> --}}
 
 </body>
 
