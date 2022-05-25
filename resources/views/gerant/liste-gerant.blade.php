@@ -77,22 +77,32 @@
                                       </div>
                                       <div class="card-body table-border-style">
                                         <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <label>Nom</label>
-                                                            <input type="text" class="form-control" placeholder="Text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Lieu</label>
-                                                            <input type="text" class="form-control" placeholder="Text">
-                                                        </div>
-
-                                                        <button type="submit" class="btn btn-primary">Ajouter</button>
-                                                    </form>
+                                            <form action="{{url('/gerants')}}" method="POST">
+                                                @csrf
+                                            <div class="row g-3">
+                                                <div class="col">
+                                                    <label for="inputEmail4" class="form-label">Nom</label>
+                                                  <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
+                                                </div>
+                                                <div class="col">
+                                                    <label for="inputEmail4" class="form-label">Prenom</label>
+                                                  <input type="text" name="prenom" class="form-control" placeholder="prenom" aria-label="Last name">
                                                 </div>
                                             </div>
+                                            <div class="row g-3 mt-3">
+                                                <div class="col">
+                                                    <label for="inputEmail4" class="form-label">adresse</label>
+                                                  <input type="text" name="adresse" class="form-control" placeholder="adresse" aria-label="First name">
+                                                </div>
+                                                <div class="col">
+                                                    <label for="inputEmail4" class="form-label">Numero carte d'identite</label>
+                                                  <input type="text" name="cni" class="form-control" placeholder="Numero carte d'identite" aria-label="Last name">
+                                                </div>
+                                              </div>
+                                              <div class="col-12 mt-5">
+                                                <input type="submit" class="btn btn-primary" value="Ajouter le gerant">
+                                              </div>
+                                            </form>
                                         </div>
                                       </div>
                                   </div>
@@ -114,30 +124,26 @@
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>type</th>
-                                                            <th>date</th>
+                                                            <th>Nom</th>
+                                                            <th>Prenom</th>
+                                                            <th>Adresse</th>
+                                                            <th>Numero carte d'identite</th>
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($gerant as $gerant)
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td>Avisen</td>
-                                                            <td>demarrage</td>
-                                                            <td>28-07-2022</td>
+                                                            <td>{{$gerant->id}}</td>
+                                                            <td>{{$gerant->nom}}</td>
+                                                            <td>{{$gerant->prenom}}</td>
+                                                            <td>{{$gerant->adresse}}</td>
+                                                            <td>{{$gerant->cni}}</td>
+                                                            <td>mod et sup</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>@fat</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Larry</td>
-                                                            <td>the Bird</td>
-                                                            <td>@twitter</td>
-                                                        </tr>
+                                                        @endforeach
+
+
                                                     </tbody>
                                                 </table>
                                             </div>

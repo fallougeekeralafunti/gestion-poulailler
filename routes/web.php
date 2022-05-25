@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GerantController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+/* Route::resource('contrat','AjouterContratController');
+ */Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/produits', function () {
@@ -28,9 +29,8 @@ Route::get('/materiels', function () {
 Route::get('/poulaillers', function () {
     return view('poulaillers.liste-poulailler');
 });
-Route::get('/gerants', function () {
-    return view('gerant.liste-gerant');
-});
+Route::get('/gerants',[GerantController::class,"index"])->name('Gerant.index');;
+Route::post('/gerants',[GerantController::class,"store"]);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

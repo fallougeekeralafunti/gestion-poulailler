@@ -14,7 +14,10 @@ class GerantController extends Controller
      */
     public function index()
     {
-       /*  $Gerant = Gerant::all();
+            $gerant = Gerant::all();
+            return view('gerant.liste-gerant',compact('gerant'));
+
+        /*  $Gerant = Gerant::all();
         return view('liste-gerant',compact('Gerant')); */
     }
 
@@ -36,7 +39,14 @@ class GerantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $gerant= Gerant::create([
+            'id' => $request->id,
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'adresse' => $request->adresse,
+            'cni' => $request->cni,
+        ]);
+        return redirect()->route('Gerant.index')->withSuccess(__('Devis Enregistrer avec succes.'));
     }
 
     /**
