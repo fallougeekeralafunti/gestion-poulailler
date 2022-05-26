@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gerant;
 use App\Models\Poulailler;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class PoulaillerController extends Controller
      */
     public function index()
     {
-        //
+        $poulailler = Poulailler::all();
+        $gerant = Gerant::all();
+        return view('poulaillers.liste-poulailler',compact('poulailler','gerant'));
     }
 
     /**
@@ -24,7 +27,9 @@ class PoulaillerController extends Controller
      */
     public function create()
     {
-        //
+        $poulailler = Poulailler::all();
+        $gerant = Gerant::all();
+        return view('poulaillers.liste-poulailler',compact('poulailler','gerant'));
     }
 
     /**
@@ -35,7 +40,13 @@ class PoulaillerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $poulailler= Poulailler::create([
+            'id' => $request->id,
+            'nom' => $request->nom,
+            'lieu' => $request->lieu,
+            'gerant_id' => $request->gerant,
+        ]);
+        return redirect()->back()->withSuccess(__('Devis Enregistrer avec succes.'));
     }
 
     /**

@@ -14,7 +14,10 @@ class GerantController extends Controller
      */
     public function index()
     {
-       /*  $Gerant = Gerant::all();
+            $gerant = Gerant::all();
+            return view('gerant.liste-gerant',compact('gerant'));
+
+        /*  $Gerant = Gerant::all();
         return view('liste-gerant',compact('Gerant')); */
     }
 
@@ -36,7 +39,14 @@ class GerantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $gerant= Gerant::create([
+            'id' => $request->id,
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'adresse' => $request->adresse,
+            'cni' => $request->cni,
+        ]);
+        return redirect()->route('Gerant.index')->withSuccess(__('Enregistrer avec succes.'));
     }
 
     /**
@@ -56,9 +66,10 @@ class GerantController extends Controller
      * @param  \App\Models\Gerant  $gerant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Gerant $gerant)
+    public function edit(Request $request, $id)
     {
-        //
+        $gerant = Gerant::find($id);
+        return view('gerant.modifier-gerant',compact('gerant'));
     }
 
     /**
@@ -68,9 +79,17 @@ class GerantController extends Controller
      * @param  \App\Models\Gerant  $gerant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Gerant $gerant)
+    public function update(Request $request, $id)
     {
-        //
+         Gerant::where('id','=',$id)->update([
+            'id'=>$id,
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'adresse' => $request->adresse,
+            'cni' => $request->cni,
+
+        ]);
+        return redirect()->route('Gerant.index')->with('success', 'mise à jour avec succèss');
     }
 
     /**
@@ -79,8 +98,11 @@ class GerantController extends Controller
      * @param  \App\Models\Gerant  $gerant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Gerant $gerant)
+    public function destroy($id)
     {
-        //
+        $doss = Gerant::find($id);
+        //ddd($doss);
+        $doss->delete();
+        return redirect()->route('Gerant.index')->with('success', 'Supprimer avec succèss');
     }
 }
