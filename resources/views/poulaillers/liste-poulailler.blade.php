@@ -77,7 +77,7 @@
                                       </div>
                                       <div class="card-body table-border-style">
                                         <div class="card-body">
-                                            <form  action="{{route('Poulaillerstore')}}" method="POST">
+                                            <form  action="{{route('Poulailler.store')}}" method="POST">
                                                 @csrf
                                                 <div class="row g-3">
                                                     <div class="col">
@@ -113,7 +113,7 @@
 
                             </div>
 							<!-- [ Main Content ] start -->
-							
+
                                   <div class="col-xl-12">
                                     <div class="card">
                                         <div class="card-header">
@@ -128,7 +128,7 @@
                                                             <th>#</th>
                                                             <th>Nom</th>
                                                             <th>lieu</th>
-                                                            {{-- <th>Gerant</th> --}}
+                                                            <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -137,7 +137,22 @@
                                                             <td>{{$poulailler->id}}</td>
                                                             <td>{{$poulailler->nom}}</td>
                                                             <td>{{$poulailler->lieu}}</td>
-                                                          {{--   <td>{{$poulailler->nom}}</td> --}}
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                    <a class="btn btn-outline-info btn-sm" href="{{ route('Poulailler.edit',$poulailler->id) }}">
+                                                                            <i class="fas fa-pencil-alt">
+                                                                            </i>
+                                                                            Modifier
+                                                                        </a>
+                                                                        <form action= "{{ route('Poulailler.destroy',$poulailler->id)}} "  method="POST">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
+                                                                            {{-- <i class="fas fa-trash"></i> --}}
+                                                                        </form>
+
+                                                                </div>
+                                                            </td>
                                                         </tr>
                                                         @endforeach
 
@@ -161,52 +176,6 @@
 	</div>
 	<!-- [ Main Content ] end -->
 
-	<!-- Warning Section start -->
-	<!-- Older IE warning message -->
-	<!--[if lt IE 11]>
-        <div class="ie-warning">
-            <h1>Warning!!</h1>
-            <p>You are using an outdated version of Internet Explorer, please upgrade
-               <br/>to any of the following web browsers to access this website.
-            </p>
-            <div class="iew-container">
-                <ul class="iew-download">
-                    <li>
-                        <a href="http://www.google.com/chrome/">
-                            <img src="../assets/images/browser/chrome.png" alt="Chrome">
-                            <div>Chrome</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.mozilla.org/en-US/firefox/new/">
-                            <img src="../assets/images/browser/firefox.png" alt="Firefox">
-                            <div>Firefox</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.opera.com">
-                            <img src="../assets/images/browser/opera.png" alt="Opera">
-                            <div>Opera</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.apple.com/safari/">
-                            <img src="../assets/images/browser/safari.png" alt="Safari">
-                            <div>Safari</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                            <img src="../assets/images/browser/ie.png" alt="">
-                            <div>IE (11 & above)</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <p>Sorry for the inconvenience!</p>
-        </div>
-    <![endif]-->
-	<!-- Warning Section Ends -->
 
 	<!-- Required Js -->
 	<script src="{{asset('assets/js/vendor-all.min.js')}}"></script>

@@ -35,11 +35,13 @@ Route::put('/materiels/{id}',[MaterielController::class,"update"])->name('Materi
 Route::delete('/materiels/{id}',[MaterielController::class,"destroy"])->name('Materiel.destroy');
 
 
-Route::get('/poulaillers',[PoulaillerController::class,"index"])->name('Poulaillerindex');
-Route::post('/poulaillers',[PoulaillerController::class,"store"])->name('Poulaillerstore');
-// Route::get('/poulaillers', function () {
-//     return view('poulaillers.liste-poulailler');
-// });
+Route::get('/poulaillers',[PoulaillerController::class,"index"])->name('Poulailler.index');
+Route::post('/poulaillers',[PoulaillerController::class,"store"])->name('Poulailler.store');
+Route::get('/poulaillers/{id}/edit',[PoulaillerController::class,"edit"])->name('Poulailler.edit');
+Route::put('/poulaillers/{id}',[PoulaillerController::class,"update"])->name('Poulailler.update');
+Route::delete('/poulaillers/{id}',[PoulaillerController::class,"destroy"])->name('Poulailler.destroy');
+//Route::resource('/poulaillers', PoulaillerController::class)->names('Poulaillers');
+
 Route::get('/gerants',[GerantController::class,"index"])->name('Gerant.index');
 Route::post('/gerants',[GerantController::class,"store"])->name('Gerant.store');
 Route::get('/gerant/{id}/edit',[GerantController::class,"edit"])->name('Gerant.edit');
