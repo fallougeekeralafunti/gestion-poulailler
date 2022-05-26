@@ -16,7 +16,7 @@ class PoulaillerController extends Controller
     public function index()
     {
         $poulailler = Poulailler::all();
-        $gerant = Gerant::all();
+        $gerant = Gerant::get()->sort();
         return view('poulaillers.liste-poulailler',compact('poulailler','gerant'));
     }
 
@@ -27,7 +27,9 @@ class PoulaillerController extends Controller
      */
     public function create()
     {
-        //
+        $poulailler = Poulailler::all();
+        $gerant = Gerant::all();
+        return view('poulaillers.liste-poulailler',compact('poulailler','gerant'));
     }
 
     /**

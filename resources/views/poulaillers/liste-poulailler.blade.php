@@ -77,19 +77,31 @@
                                       </div>
                                       <div class="card-body table-border-style">
                                         <div class="card-body">
-                                            <form {{-- action="{{route('gerants.store')}}" --}} method="POST">
+                                            <form  action="{{route('gerants.store')}}" method="POST">
                                                 @csrf
-                                            <div class="row g-3">
-                                                <div class="col">
-                                                    <label for="inputEmail4" class="form-label">Nom</label>
-                                                  <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
+                                                <div class="row g-3">
+                                                    <div class="col">
+                                                        <label class="form-label">Nom</label>
+                                                    <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label class="form-label">lieu</label>
+                                                    <input type="text" name="lieu" class="form-control" placeholder="lieu" aria-label="Last name">
+                                                    {{-- <input type="hidden" name="gerant_id" value="{{  $gerant->id }}"> --}}
+                                                    </div>
+                                                   <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">le gérant</label>
+                                                        <select class="form-control" id="exampleFormControlSelect1" name='gerant'>
+                                                            @foreach ($gerant as $gerant)
+                                                            <option value="{{$gerant->id}}">{{ $gerant->nom }}</option>
+                                                            @endforeach
+                                                        </select>
+
+                                                    </div>
+                                                   </div>
                                                 </div>
-                                                <div class="col">
-                                                    <label for="inputEmail4" class="form-label">lieu</label>
-                                                  <input type="text" name="prenom" class="form-control" placeholder="prenom" aria-label="Last name">
-                                                  {{-- <input type="hidden" name="gerant_id" value="{{  $gerant->id }}"> --}}
-                                                </div>
-                                            </div>
+
 
                                               <div class="col-12 mt-5">
                                                 <input type="submit" class="btn btn-primary" value="Ajouter le gerant">
