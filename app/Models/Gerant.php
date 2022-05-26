@@ -11,6 +11,13 @@ class Gerant extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'adresse',
+        'cni',
+    ];
+
     public function poulailler(){
         return $this->hasMany(Poulailler::class);
     }

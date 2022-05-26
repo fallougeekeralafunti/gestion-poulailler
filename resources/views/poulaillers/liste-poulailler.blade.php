@@ -77,7 +77,7 @@
                                       </div>
                                       <div class="card-body table-border-style">
                                         <div class="card-body">
-                                            <form  action="{{route('gerants.store')}}" method="POST">
+                                            <form  action="{{route('Poulaillerstore')}}" method="POST">
                                                 @csrf
                                                 <div class="row g-3">
                                                     <div class="col">
