@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gerant;
 use App\Models\Poulailler;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PoulaillerController extends Controller
 {
@@ -15,8 +16,13 @@ class PoulaillerController extends Controller
      */
     public function index()
     {
-        $poulailler = Poulailler::all();
+        $poulailler = Poulailler::join('gerants','gerants.id','=','poulaillers.gerant_id')->get();
         $gerant = Gerant::all();
+        /* $poulailler = DB::table('gerants')
+                        ->join('poulailler','gerant.id','=','poulailler.gerant_id')
+                        ->select('gerants.nom as NomGerant','poulailler.nom as NomPoulailler')
+                        ->get();
+                    ddd($poulailler); */
         return view('poulaillers.liste-poulailler',compact('poulailler','gerant'));
     }
 
@@ -27,9 +33,9 @@ class PoulaillerController extends Controller
      */
     public function create()
     {
-        $poulailler = Poulailler::all();
+        /* $poulailler = Poulailler::all();
         $gerant = Gerant::all();
-        return view('poulaillers.liste-poulailler',compact('poulailler','gerant'));
+        return view('poulaillers.liste-poulailler',compact('poulailler','gerant')); */
     }
 
     /**

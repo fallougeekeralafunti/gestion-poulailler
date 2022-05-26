@@ -35,7 +35,15 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produit= Produit::create([
+            'id' => $request->id,
+            'nom' => $request->nom,
+            'prix' => $request->prix,
+            'quantite' => $request->quantite,
+            'type' => $request->type,
+            'poulailler' => $request->cni,
+        ]);
+        return redirect()->route('Produit.index')->withSuccess(__('Enregistrer avec succes.'));
     }
 
     /**
@@ -55,9 +63,10 @@ class ProduitController extends Controller
      * @param  \App\Models\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produit $produit)
+    public function edit(Produit $produit,$id)
     {
-        //
+        $produit = Produit::find($id);
+        return view('produit.modifier-produit',compact('produit'));
     }
 
     /**

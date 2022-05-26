@@ -97,14 +97,13 @@
                                                             <option value="{{$gerant->id}}">{{ $gerant->prenom }}&nbsp;{{ $gerant->nom }}</option>
                                                             @endforeach
                                                         </select>
-
                                                     </div>
                                                    </div>
                                                 </div>
 
 
                                               <div class="col-12 mt-5">
-                                                <input type="submit" class="btn btn-primary" value="Ajouter le gerant">
+                                                <input type="submit" class="btn btn-primary" value="Ajouter le poulailler">
                                               </div>
                                             </form>
                                         </div>
@@ -130,7 +129,7 @@
                                                             <th>#</th>
                                                             <th>Nom</th>
                                                             <th>lieu</th>
-                                                            <th>Gerant</th>
+                                                            {{-- <th>Gerant</th> --}}
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -139,7 +138,7 @@
                                                             <td>{{$poulailler->id}}</td>
                                                             <td>{{$poulailler->nom}}</td>
                                                             <td>{{$poulailler->lieu}}</td>
-                                                            <td>{{$poulailler->gerant_id}}</td>
+                                                          {{--   <td>{{$poulailler->nom}}</td> --}}
                                                         </tr>
                                                         @endforeach
 
