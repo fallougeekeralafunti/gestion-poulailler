@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materiel;
+use App\Models\Poulailler;
 use Illuminate\Http\Request;
 
 class MaterielController extends Controller
@@ -14,7 +15,9 @@ class MaterielController extends Controller
      */
     public function index()
     {
-
+        $materiel=Materiel::all();
+        $poulailler= Poulailler::all();
+        return view('materiels.liste-materiel',compact('materiel','poulailler')); // lister tout les materiels
     }
 
     /**
@@ -24,7 +27,9 @@ class MaterielController extends Controller
      */
     public function create()
     {
-        //
+        $materiel=Materiel::all();
+        $poulailler= Poulailler::all();
+        return view('materiels.liste-materiel',compact('materiel','poulailler')); // lister tout les materiels
     }
 
     /**
@@ -39,8 +44,9 @@ class MaterielController extends Controller
             'id'=>$request->id,
             'nom'=>$request->nom,
             'prix'=>$request->prix,
-            'poulailler_id'=>$request->poulailler_id
+            'poulailler_id'=>$request->poulailler_id,
         ]);
+        return redirect()->route('Materiel.index')->withSuccess(__('Enregistrer avec succes.'));
     }
 
     /**
@@ -51,8 +57,7 @@ class MaterielController extends Controller
      */
     public function show(Materiel $materiel)
     {
-        $mat=Materiel::all();
-        return view('materiels.liste-materiel',compact('mat')); // lister tout les materiels
+        //
     }
 
     /**
@@ -61,10 +66,10 @@ class MaterielController extends Controller
      * @param  \App\Models\Materiel  $materiel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Materiel $materiel,$id)
+    public function edit(Materiel $materiel, $id)
     {
-        $matos=Materiel::find($id);
-        return view('materiel.modifier-materiel',compact('matos'));
+        $materiel=Materiel::find($id);
+        return view('materiels.modifier-materiel',compact('materiel'));
     }
 
     /**
@@ -82,7 +87,7 @@ class MaterielController extends Controller
             'prix'=>$request->prix,
             'poulailler_id'=>$request->poulailler_id,
         ]);
-        return redirect()->route('Materiel.index')->with('success');
+        return redirect()->route('Materiel.index')->with('success', 'mise à jour avec succèss');
     }
 
     /**
@@ -95,6 +100,6 @@ class MaterielController extends Controller
     {
         $del=Materiel::find($id);
         $del->delete();
-        return redirect()->route('Materiel.index')->with('success');
+        return redirect()->route('Materiel.index')->with('success', 'Supprimer avec succèss');
     }
 }

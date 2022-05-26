@@ -82,12 +82,12 @@
                                                 <div class="row g-3">
                                                     <div class="col">
                                                         <label class="form-label">Nom</label>
-                                                    <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
+                                                        <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">lieu</label>
-                                                    <input type="text" name="lieu" class="form-control" placeholder="lieu" aria-label="Last name">
-                                                    {{-- <input type="hidden" name="gerant_id" value="{{  $gerant->id }}"> --}}
+                                                        <input type="text" name="lieu" class="form-control" placeholder="lieu" aria-label="Last name">
+                                                        {{-- <input type="hidden" name="gerant_id" value="{{  $gerant->id }}"> --}}
                                                     </div>
                                                    <div class="col">
                                                     <div class="form-group">
@@ -98,7 +98,6 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                   </div>
                                                 </div>
 
 
@@ -114,7 +113,7 @@
 
                             </div>
 							<!-- [ Main Content ] start -->
-							<div class="row">
+							
                                   <div class="col-xl-12">
                                     <div class="card">
                                         <div class="card-header">
@@ -151,7 +150,7 @@
                                 </div>
                                 <!-- [ stiped-table ] end -->
 
-							</div>
+
 
 							<!-- [ Main Content ] end -->
 						</div>

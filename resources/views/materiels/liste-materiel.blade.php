@@ -68,7 +68,7 @@
 							</div>
 							<!-- [ breadcrumb ] end -->
 							<!-- [ Main Content ] start -->
-							<div class="row">
+							<div class="row col-xl-12">
 								<div class="col-md-12 col-xl-4">
 									<div class="card card-social">
 										<div class="card-block border-bottom">
@@ -162,14 +162,57 @@
 										</div>
 									</div>
 								</div>
+							</div>
 								<!-- sessions-section start -->
+
+								<!-- ajout matos -->
+
+                                <div class="col-xl-12">
+									<div class="card">
+										<div class="card-header">
+											<h5>Ajout Materiel </h5>
+											{{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
+										</div>
+										<div class="card-body table-border-style">
+											<div class="card-body">
+												<form {{-- action="{{route('materiel.store')}}" --}} method="POST">
+													@csrf
+													<div class="row g-3">
+														<div class="col">
+															<label for="inputEmail4" class="form-label">Nom</label>
+															<input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
+														</div>
+														<div class="col">
+															<label for="prix" class="form-label">Prix</label>
+															<input type="number" name="prix" class="form-control" placeholder="prix" aria-label="Last name">
+														</div>
+														<div class="col">
+															<div class="form-group">
+																<label for="exampleFormControlSelect1">poulailler</label>
+																<select class="form-control" id="exampleFormControlSelect1" name='poulailler_id'>
+                                                                    @foreach ($poulailler as $poulailler)
+																	    <option value="{{$poulailler->id}}">{{ $poulailler->nom }}</option>
+																    @endforeach
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="col-12 mt-5">
+														<input type="submit" class="btn btn-primary" value="Ajouter materiel">
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+                              	</div>
+                              <!-- [ stiped-table ] end -->
+
 								  <!-- [ stiped-table ] start -->
                                   <div class="col-xl-12">
                                     <div class="card">
-
                                         <div class="card-header">
                                             <h5>liste des materiels </h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <button type="button" style="float : rigth;" class="btn btn-outline-primary" title="btn btn-outline-primary" data-toggle="tooltip">Ajouter materiel</button>
+
                                             {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
                                         </div>
                                         <div class="card-body table-border-style">
@@ -181,27 +224,35 @@
                                                             <th>Name</th>
                                                             <th>type</th>
                                                             <th>date</th>
+															<th>action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+													@foreach ($materiel as $materiel)
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td>Avisen</td>
-                                                            <td>demarrage</td>
-                                                            <td>28-07-2022</td>
+                                                            <td>{{$materiel->id}}</td>
+                                                            <td>{{$materiel->nom}}</td>
+                                                            <td>{{$materiel->prix}}</td>
+                                                            <td>{{$materiel->poulailler_id}}</td>
+															<td >
+															<div class="d-flex">
+															<a class="btn btn-outline-info btn-sm" href="{{ route('Materiel.edit',$materiel->id) }}">
+                                                                    <i class="fas fa-pencil-alt">
+                                                                    </i>
+                                                                    Modifier
+                                                                </a>
+                                                                <form action="{{ route('Materiel.destroy',$materiel->id)}}"  method="POST">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
+                                                                    {{-- <i class="fas fa-trash"></i> --}}
+                                                                </form>
+
+															</div>
+
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>@fat</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Larry</td>
-                                                            <td>the Bird</td>
-                                                            <td>@twitter</td>
-                                                        </tr>
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -219,54 +270,8 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- [ Main Content ] end -->
 
-	<!-- Warning Section start -->
-	<!-- Older IE warning message -->
-	<!--[if lt IE 11]>
-        <div class="ie-warning">
-            <h1>Warning!!</h1>
-            <p>You are using an outdated version of Internet Explorer, please upgrade
-               <br/>to any of the following web browsers to access this website.
-            </p>
-            <div class="iew-container">
-                <ul class="iew-download">
-                    <li>
-                        <a href="http://www.google.com/chrome/">
-                            <img src="../assets/images/browser/chrome.png" alt="Chrome">
-                            <div>Chrome</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.mozilla.org/en-US/firefox/new/">
-                            <img src="../assets/images/browser/firefox.png" alt="Firefox">
-                            <div>Firefox</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.opera.com">
-                            <img src="../assets/images/browser/opera.png" alt="Opera">
-                            <div>Opera</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.apple.com/safari/">
-                            <img src="../assets/images/browser/safari.png" alt="Safari">
-                            <div>Safari</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                            <img src="../assets/images/browser/ie.png" alt="">
-                            <div>IE (11 & above)</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <p>Sorry for the inconvenience!</p>
-        </div>
-    <![endif]-->
+
 	<!-- Warning Section Ends -->
 
 	<!-- Required Js -->
