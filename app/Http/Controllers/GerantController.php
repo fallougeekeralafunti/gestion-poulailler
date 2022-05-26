@@ -46,7 +46,7 @@ class GerantController extends Controller
             'adresse' => $request->adresse,
             'cni' => $request->cni,
         ]);
-        return redirect()->route('Gerant.index')->withSuccess(__('Devis Enregistrer avec succes.'));
+        return redirect()->route('Gerant.index')->withSuccess(__('Enregistrer avec succes.'));
     }
 
     /**
@@ -89,7 +89,7 @@ class GerantController extends Controller
             'cni' => $request->cni,
 
         ]);
-        return redirect()->route('Gerant.index')->with('success', 'Agent mise à jour avec succèss');
+        return redirect()->route('Gerant.index')->with('success', 'mise à jour avec succèss');
     }
 
     /**
@@ -103,6 +103,6 @@ class GerantController extends Controller
         $doss = Gerant::find($id);
         //ddd($doss);
         $doss->delete();
-        return redirect()->route('Gerant.index')->with('success', 'Service supprimer avec succèss');
+        return redirect()->route('Gerant.index')->with('success', 'Supprimer avec succèss');
     }
 }
