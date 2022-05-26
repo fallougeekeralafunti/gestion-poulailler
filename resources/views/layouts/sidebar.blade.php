@@ -24,7 +24,7 @@
                     <a href="{{url('produits')}}" class="nav-link"><span class="pcoded-micon"><i class="fas fa-utensils"></i></span><span class="pcoded-mtext">Produits</span></a>
                 </li>
                 <li class="nav-item ">
-                    <a href="{{url('poulaillers')}}" class="nav-link"><span class="pcoded-micon"><i class="far fa-building"></i></span><span class="pcoded-mtext">Poulaillers</span></a>
+                    <a href="{{route('Poulaillerindex')}}" class="nav-link"><span class="pcoded-micon"><i class="far fa-building"></i></span><span class="pcoded-mtext">Poulaillers</span></a>
                 </li>
                 <li class="nav-item ">
                     <a href="{{url('materiels')}}" class="nav-link"><span class="pcoded-micon"><i class="fas fa-cubes"></i></span><span class="pcoded-mtext">Materiels</span></a>

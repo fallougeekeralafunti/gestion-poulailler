@@ -27,11 +27,11 @@ Route::get('/stocksPoulets', function () {
 Route::get('/materiels', function () {
     return view('materiels.liste-materiel');
 });
-Route::get('/poulaillers',[PoulaillerController::class,"index"])->name('Poulailler.index');
-Route::post('/poulaillers',[PoulaillerController::class,"store"])->name('Poulailler.store');
-Route::get('/poulaillers', function () {
-    return view('poulaillers.liste-poulailler');
-});
+Route::get('/poulaillers',[PoulaillerController::class,"index"])->name('Poulaillerindex');
+Route::post('/poulaillers',[PoulaillerController::class,"store"])->name('Poulaillerstore');
+// Route::get('/poulaillers', function () {
+//     return view('poulaillers.liste-poulailler');
+// });
 Route::get('/gerants',[GerantController::class,"index"])->name('Gerant.index');
 Route::post('/gerants',[GerantController::class,"store"])->name('Gerant.store');
 Route::get('/gerant/{id}/edit',[GerantController::class,"edit"])->name('Gerant.edit');

@@ -16,7 +16,7 @@ class PoulaillerController extends Controller
     public function index()
     {
         $poulailler = Poulailler::all();
-        $gerant = Gerant::get()->sort();
+        $gerant = Gerant::all();
         return view('poulaillers.liste-poulailler',compact('poulailler','gerant'));
     }
 
@@ -44,9 +44,9 @@ class PoulaillerController extends Controller
             'id' => $request->id,
             'nom' => $request->nom,
             'lieu' => $request->lieu,
-            'gerant_id' => $request->gerant_id,
+            'gerant_id' => $request->gerant,
         ]);
-        return redirect()->route('poulaillers.liste-poulailler')->withSuccess(__('Devis Enregistrer avec succes.'));
+        return redirect()->back()->withSuccess(__('Devis Enregistrer avec succes.'));
     }
 
     /**
