@@ -69,7 +69,7 @@
 							<!-- [ breadcrumb ] end -->
 							<!-- [ Main Content ] start -->
 							<div class="row">
-								{{-- <div class="col-md-12 col-xl-4">
+								<div class="col-md-12 col-xl-4">
 									<div class="card card-social">
 										<div class="card-block border-bottom">
 											<div class="row align-items-center justify-content-center">
@@ -161,7 +161,7 @@
 											</div>
 										</div>
 									</div>
-								</div> --}}
+								</div>
 								<!-- sessions-section start -->
 								  <!-- [ stiped-table ] start -->
                                   <div class="col-xl-12">
@@ -219,6 +219,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<!-- [ Main Content ] end -->
 
 	<!-- Warning Section start -->

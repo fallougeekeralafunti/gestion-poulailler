@@ -14,7 +14,7 @@ class MaterielController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +35,12 @@ class MaterielController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $materiel=Materiel::create([
+            'id'=>$request->id,
+            'nom'=>$request->nom,
+            'prix'=>$request->prix,
+            'poulailler_id'=>$request->poulailler_id
+        ]);
     }
 
     /**
@@ -46,7 +51,8 @@ class MaterielController extends Controller
      */
     public function show(Materiel $materiel)
     {
-        //
+        $mat=Materiel::all();
+        return view('materiels.liste-materiel',compact('mat')); // lister tout les materiels
     }
 
     /**
@@ -57,7 +63,8 @@ class MaterielController extends Controller
      */
     public function edit(Materiel $materiel)
     {
-        //
+        $matos=Materiel::find($id);
+        return view('materiel.modifier-materiel',compact('matos'));
     }
 
     /**
@@ -67,9 +74,15 @@ class MaterielController extends Controller
      * @param  \App\Models\Materiel  $materiel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Materiel $materiel)
+    public function update(Request $request, $id)
     {
-        //
+        Materiel::where('id','=',$id)->update([
+            'id'=>id,
+            'nom'=>$request->nom,
+            'prix'=>$request->prix,
+            'poulailler_id'=>$request->poulailler_id,
+        ]);
+        return redirect()->route('Materiel.index')->with('success');
     }
 
     /**
@@ -78,8 +91,10 @@ class MaterielController extends Controller
      * @param  \App\Models\Materiel  $materiel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Materiel $materiel)
+    public function destroy($id)
     {
-        //
+        $del=Materiel::find($id);
+        $del->delete();
+        return redirect()->route('Materiel.index')->with('success');
     }
 }
