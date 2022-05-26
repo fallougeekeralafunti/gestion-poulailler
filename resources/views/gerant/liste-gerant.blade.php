@@ -77,7 +77,7 @@
                                       </div>
                                       <div class="card-body table-border-style">
                                         <div class="card-body">
-                                            <form action="{{url('/gerants')}}" method="POST">
+                                            <form {{-- action="{{route('gerants.store')}}" --}} method="POST">
                                                 @csrf
                                             <div class="row g-3">
                                                 <div class="col">
@@ -139,7 +139,20 @@
                                                             <td>{{$gerant->prenom}}</td>
                                                             <td>{{$gerant->adresse}}</td>
                                                             <td>{{$gerant->cni}}</td>
-                                                            <td>mod et sup</td>
+                                                            <td >
+                                                                <a class="btn btn-outline-info btn-sm" href="{{ route('Gerant.edit',$gerant->id) }}">
+                                                                    <i class="fas fa-pencil-alt">
+                                                                    </i>
+                                                                    Modifier
+                                                                </a>
+                                                                <form action="{{ route('Gerant.destroy',$gerant->id)}}"  method="POST">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
+                                                                    {{-- <i class="fas fa-trash"></i> --}}
+                                                                </form>
+
+                                                            </td>
                                                         </tr>
                                                         @endforeach
 

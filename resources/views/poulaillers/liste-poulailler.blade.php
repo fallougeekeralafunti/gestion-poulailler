@@ -77,22 +77,24 @@
                                       </div>
                                       <div class="card-body table-border-style">
                                         <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <label>Nom</label>
-                                                            <input type="text" class="form-control" placeholder="Text">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Lieu</label>
-                                                            <input type="text" class="form-control" placeholder="Text">
-                                                        </div>
-
-                                                        <button type="submit" class="btn btn-primary">Ajouter</button>
-                                                    </form>
+                                            <form {{-- action="{{route('gerants.store')}}" --}} method="POST">
+                                                @csrf
+                                            <div class="row g-3">
+                                                <div class="col">
+                                                    <label for="inputEmail4" class="form-label">Nom</label>
+                                                  <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
+                                                </div>
+                                                <div class="col">
+                                                    <label for="inputEmail4" class="form-label">lieu</label>
+                                                  <input type="text" name="prenom" class="form-control" placeholder="prenom" aria-label="Last name">
+                                                  {{-- <input type="hidden" name="gerant_id" value="{{  $gerant->id }}"> --}}
                                                 </div>
                                             </div>
+
+                                              <div class="col-12 mt-5">
+                                                <input type="submit" class="btn btn-primary" value="Ajouter le gerant">
+                                              </div>
+                                            </form>
                                         </div>
                                       </div>
                                   </div>

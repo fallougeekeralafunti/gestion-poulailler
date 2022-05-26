@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GerantController;
+use App\Http\Controllers\PoulaillerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,11 +27,16 @@ Route::get('/stocksPoulets', function () {
 Route::get('/materiels', function () {
     return view('materiels.liste-materiel');
 });
+Route::get('/poulaillers',[PoulaillerController::class,"index"])->name('Poulailler.index');
+Route::post('/poulaillers',[PoulaillerController::class,"store"])->name('Poulailler.store');
 Route::get('/poulaillers', function () {
     return view('poulaillers.liste-poulailler');
 });
-Route::get('/gerants',[GerantController::class,"index"])->name('Gerant.index');;
-Route::post('/gerants',[GerantController::class,"store"]);
+Route::get('/gerants',[GerantController::class,"index"])->name('Gerant.index');
+Route::post('/gerants',[GerantController::class,"store"])->name('Gerant.store');
+Route::get('/gerant/{id}/edit',[GerantController::class,"edit"])->name('Gerant.edit');
+Route::put('/gerant/{id}',[GerantController::class,"update"])->name('Gerant.update');
+Route::delete('/gerant/{id}',[GerantController::class,"destroy"])->name('Gerant.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
