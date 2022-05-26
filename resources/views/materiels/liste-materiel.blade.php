@@ -68,7 +68,7 @@
 							</div>
 							<!-- [ breadcrumb ] end -->
 							<!-- [ Main Content ] start -->
-							<div class="row">
+							<div class="row col-xl-12">
 								<div class="col-md-12 col-xl-4">
 									<div class="card card-social">
 										<div class="card-block border-bottom">
@@ -162,14 +162,56 @@
 										</div>
 									</div>
 								</div>
+							</div>
 								<!-- sessions-section start -->
+
+								<!-- ajout matos -->
+							
+                                <div class="col-xl-12">
+									<div class="card">
+										<div class="card-header">
+											<h5>Ajout Materiel </h5>
+											{{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
+										</div>
+										<div class="card-body table-border-style">
+											<div class="card-body">
+												<form {{-- action="{{route('materiel.store')}}" --}} method="POST">
+													@csrf
+													<div class="row g-3">
+														<div class="col">
+															<label for="inputEmail4" class="form-label">Nom</label>
+															<input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
+														</div>
+														<div class="col">
+															<label for="prix" class="form-label">Prix</label>
+															<input type="number" name="prix" class="form-control" placeholder="prix" aria-label="Last name">
+														</div>
+														<div class="col">
+															<div class="form-group">
+																<label for="exampleFormControlSelect1">poulailler</label>
+																<select class="form-control" id="exampleFormControlSelect1" name='poulailler_id'>			@foreach ($poulailler as $poulailler)
+																	<option value="{{$poulailler->id}}">{{ $poulailler->nom }}</option>
+																@endforeach
+																</select>
+															</div>
+														</div>
+													</div>						
+													<div class="col-12 mt-5">
+														<input type="submit" class="btn btn-primary" value="Ajouter materiel">
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+                              	</div>
+                              <!-- [ stiped-table ] end -->
+                            
 								  <!-- [ stiped-table ] start -->
                                   <div class="col-xl-12">
                                     <div class="card">
-
                                         <div class="card-header">
                                             <h5>liste des materiels </h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <button type="button" style="float : rigth;" class="btn btn-outline-primary" title="btn btn-outline-primary" data-toggle="tooltip">Ajouter materiel</button>
+                        
                                             {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
                                         </div>
                                         <div class="card-body table-border-style">
@@ -181,27 +223,35 @@
                                                             <th>Name</th>
                                                             <th>type</th>
                                                             <th>date</th>
+															<th>action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+													@foreach ($materiel as $materiel)
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td>Avisen</td>
-                                                            <td>demarrage</td>
-                                                            <td>28-07-2022</td>
+                                                            <td>{{$materiel->id}}</td>
+                                                            <td>{{$materiel->nom}}</td>
+                                                            <td>{{$materiel->prix}}</td>
+                                                            <td>{{$materiel->poulailler_id}}</td>
+															<td >
+															<div class="d-flex">
+															<a class="btn btn-outline-info btn-sm" href="{{ route('Materiel.edit',$materiel->id) }}">
+                                                                    <i class="fas fa-pencil-alt">
+                                                                    </i>
+                                                                    Modifier
+                                                                </a>
+                                                                <form action="{{ route('Materiel.destroy',$materiel->id)}}"  method="POST">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
+                                                                    {{-- <i class="fas fa-trash"></i> --}}
+                                                                </form>
+
+															</div>
+                                                                
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>@fat</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Larry</td>
-                                                            <td>the Bird</td>
-                                                            <td>@twitter</td>
-                                                        </tr>
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

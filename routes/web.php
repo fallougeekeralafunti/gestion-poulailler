@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GerantController;
 use App\Http\Controllers\PoulaillerController;
+use App\Http\Controllers\MaterielController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,13 @@ Route::get('/stocksPoulets', function () {
 Route::get('/materiels', function () {
     return view('materiels.liste-materiel');
 });
+Route::get('/materiels',[MaterielController::class,"index"])->name('Materiel.index');
+Route::post('/materiels',[MaterielController::class,"store"])->name('Materiel.store');
+Route::get('/materiels/{id}/edit',[MaterielController::class,"edit"])->name('Materiel.edit');
+Route::put('/materiels/{id}',[MaterielController::class,"update"])->name('Materiel.update');
+Route::delete('/materiels/{id}',[MaterielController::class,"destroy"])->name('Materiel.destroy');
+
+
 Route::get('/poulaillers',[PoulaillerController::class,"index"])->name('Poulaillerindex');
 Route::post('/poulaillers',[PoulaillerController::class,"store"])->name('Poulaillerstore');
 // Route::get('/poulaillers', function () {

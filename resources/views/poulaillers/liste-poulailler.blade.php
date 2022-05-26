@@ -82,24 +82,24 @@
                                                 <div class="row g-3">
                                                     <div class="col">
                                                         <label class="form-label">Nom</label>
-                                                    <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
+                                                        <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
                                                     </div>
                                                     <div class="col">
                                                         <label class="form-label">lieu</label>
-                                                    <input type="text" name="lieu" class="form-control" placeholder="lieu" aria-label="Last name">
-                                                    {{-- <input type="hidden" name="gerant_id" value="{{  $gerant->id }}"> --}}
+                                                        <input type="text" name="lieu" class="form-control" placeholder="lieu" aria-label="Last name">
+                                                        {{-- <input type="hidden" name="gerant_id" value="{{  $gerant->id }}"> --}}
                                                     </div>
-                                                   <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlSelect1">le gérant</label>
-                                                        <select class="form-control" id="exampleFormControlSelect1" name='gerant'>
-                                                            @foreach ($gerant as $gerant)
-                                                            <option value="{{$gerant->id}}">{{ $gerant->prenom }}&nbsp;{{ $gerant->nom }}</option>
-                                                            @endforeach
-                                                        </select>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label for="exampleFormControlSelect1">le gérant</label>
+                                                            <select class="form-control" id="exampleFormControlSelect1" name='gerant'>
+                                                                @foreach ($gerant as $gerant)
+                                                                <option value="{{$gerant->id}}">{{ $gerant->prenom }}&nbsp;{{ $gerant->nom }}</option>
+                                                                @endforeach
+                                                            </select>
 
+                                                        </div>
                                                     </div>
-                                                   </div>
                                                 </div>
 
 
