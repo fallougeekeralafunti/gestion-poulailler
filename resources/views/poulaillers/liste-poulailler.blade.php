@@ -94,7 +94,7 @@
                                                         <label for="exampleFormControlSelect1">le gérant</label>
                                                         <select class="form-control" id="exampleFormControlSelect1" name='gerant'>
                                                             @foreach ($gerant as $gerant)
-                                                            <option value="{{$gerant->id}}">{{ $gerant->nom }}</option>
+                                                            <option value="{{$gerant->id}}">{{ $gerant->prenom }}&nbsp;{{ $gerant->nom }}</option>
                                                             @endforeach
                                                         </select>
 
@@ -128,30 +128,22 @@
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>type</th>
-                                                            <th>date</th>
+                                                            <th>Nom</th>
+                                                            <th>lieu</th>
+                                                            <th>Gerant</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($poulailler as $poulailler)
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td>Avisen</td>
-                                                            <td>demarrage</td>
-                                                            <td>28-07-2022</td>
+                                                            <td>{{$poulailler->id}}</td>
+                                                            <td>{{$poulailler->nom}}</td>
+                                                            <td>{{$poulailler->lieu}}</td>
+                                                            <td>{{$poulailler->gerant_id}}</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>@fat</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Larry</td>
-                                                            <td>the Bird</td>
-                                                            <td>@twitter</td>
-                                                        </tr>
+                                                        @endforeach
+
+
                                                     </tbody>
                                                 </table>
                                             </div>
