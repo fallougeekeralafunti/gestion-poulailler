@@ -68,7 +68,7 @@
 							</div>
 							<!-- [ breadcrumb ] end -->
 							<!-- [ Main Content ] start -->
-							<div class="row col-xl-12">
+							<!-- <div class="row col-xl-12">
 								<div class="col-md-12 col-xl-4">
 									<div class="card card-social">
 										<div class="card-block border-bottom">
@@ -131,7 +131,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-md-6 col-xl-4">
+								<!-- <div class="col-md-6 col-xl-4">
 									<div class="card card-social">
 										<div class="card-block border-bottom">
 											<div class="row align-items-center justify-content-center">
@@ -161,12 +161,64 @@
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
+								</div> -->
+							<!-- </div> --> 
 								<!-- sessions-section start -->
 
 								<!-- ajout matos -->
+ 								<!-- [ stiped-table ] start -->
+ 								<div class="col-xl-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>liste des materiels </h5>
 
+                                            {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
+                                        </div>
+                                        <div class="card-body table-border-style">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Name</th>
+                                                            <th>Prix</th>
+                                                            <th>poulailler</th>
+															<th>action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+													@foreach ($materiel as $materiel)
+                                                        <tr>
+                                                            <td>{{$materiel->id}}</td>
+                                                            <td>{{$materiel->nom}}</td>
+                                                            <td>{{$materiel->prix}}</td>
+                                                            <td>{{$materiel->poulailler_id}}</td>
+															<td >
+															<div class="d-flex">
+															<a class="btn btn-outline-info btn-sm" href="{{ route('Materiel.edit',$materiel->id) }}">
+                                                                    <i class="fas fa-pencil-alt">
+                                                                    </i>
+                                                                    Modifier
+                                                                </a>
+                                                                <form action="{{ route('Materiel.destroy',$materiel->id)}}"  method="POST">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
+                                                                    {{-- <i class="fas fa-trash"></i> --}}
+                                                                </form>
+
+															</div>
+
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- [ stiped-table ] end -->
                                 <div class="col-xl-12">
 									<div class="card">
 										<div class="card-header">
@@ -206,63 +258,8 @@
 									</div>
                               	</div>
                               <!-- [ stiped-table ] end -->
-
-								  <!-- [ stiped-table ] start -->
-                                  <div class="col-xl-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>liste des materiels </h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                            {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
-                                        </div>
-                                        <div class="card-body table-border-style">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>type</th>
-                                                            <th>date</th>
-															<th>action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-													@foreach ($materiel as $materiel)
-                                                        <tr>
-                                                            <td>{{$materiel->id}}</td>
-                                                            <td>{{$materiel->nom}}</td>
-                                                            <td>{{$materiel->prix}}</td>
-                                                            <td>{{$materiel->poulailler_id}}</td>
-															<td >
-															<div class="d-flex">
-															<a class="btn btn-outline-info btn-sm" href="{{ route('Materiel.edit',$materiel->id) }}">
-                                                                    <i class="fas fa-pencil-alt">
-                                                                    </i>
-                                                                    Modifier
-                                                                </a>
-                                                                <form action="{{ route('Materiel.destroy',$materiel->id)}}"  method="POST">
-                                                                    @csrf
-                                                                    @method('delete')
-                                                                    <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
-                                                                    {{-- <i class="fas fa-trash"></i> --}}
-                                                                </form>
-
-															</div>
-
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- [ stiped-table ] end -->
-
+								 
 							</div>
-
 							<!-- [ Main Content ] end -->
 						</div>
 					</div>

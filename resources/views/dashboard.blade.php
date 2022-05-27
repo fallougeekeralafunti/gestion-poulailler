@@ -69,7 +69,6 @@
 							<!-- [ breadcrumb ] end -->
 							<!-- [ Main Content ] start -->
 							<div class="row">
-
 								<!-- product profit start -->
 								<div class="col-xl-3 col-md-6">
 									<div class="card prod-p-card bg-c-red">
@@ -77,7 +76,8 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Total Poulailler</h6>
-													<h3 class="m-b-0 text-white">5</h3>
+													<h3 class="m-b-0 text-white">
+													</h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-money-bill-alt text-c-red f-18"></i>

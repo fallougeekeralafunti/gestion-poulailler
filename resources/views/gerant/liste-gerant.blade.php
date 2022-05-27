@@ -64,50 +64,7 @@
 									</div>
 								</div>
 							</div>
-							<!-- [ breadcrumb ] end -->
-                            <div class="row">
-                                <div class="col-xl-12">
-                                  <div class="card">
-
-                                      <div class="card-header">
-                                          <h5>Ajout de gerants </h5>
-                                          {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
-                                      </div>
-                                      <div class="card-body table-border-style">
-                                        <div class="card-body">
-                                            <form {{-- action="{{route('gerants.store')}}" --}} method="POST">
-                                                @csrf
-                                            <div class="row g-3">
-                                                <div class="col">
-                                                    <label for="inputEmail4" class="form-label">Nom</label>
-                                                  <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
-                                                </div>
-                                                <div class="col">
-                                                    <label for="inputEmail4" class="form-label">Prenom</label>
-                                                  <input type="text" name="prenom" class="form-control" placeholder="prenom" aria-label="Last name">
-                                                </div>
-                                            </div>
-                                            <div class="row g-3 mt-3">
-                                                <div class="col">
-                                                    <label for="inputEmail4" class="form-label">adresse</label>
-                                                  <input type="text" name="adresse" class="form-control" placeholder="adresse" aria-label="First name">
-                                                </div>
-                                                <div class="col">
-                                                    <label for="inputEmail4" class="form-label">Numero carte d'identite</label>
-                                                  <input type="text" name="cni" class="form-control" placeholder="Numero carte d'identite" aria-label="Last name">
-                                                </div>
-                                              </div>
-                                              <div class="col-12 mt-5">
-                                                <input type="submit" class="btn btn-primary" value="Ajouter le gerant">
-                                              </div>
-                                            </form>
-                                        </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <!-- [ stiped-table ] end -->
-
-                            </div>
+							
 							<!-- [ Main Content ] start -->
 							<div class="row">
                                   <div class="col-xl-12">
@@ -164,7 +121,49 @@
                                 <!-- [ stiped-table ] end -->
 
 							</div>
+                            <!-- [ breadcrumb ] end -->
+                            <div class="row">
+                                <div class="col-xl-12">
+                                  <div class="card">
+                                      <div class="card-header">
+                                          <h5>Ajout de gerants </h5>
+                                          {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
+                                      </div>
+                                      <div class="card-body table-border-style">
+                                        <div class="card-body">
+                                            <form {{-- action="{{route('gerants.store')}}" --}} method="POST">
+                                                @csrf
+                                            <div class="row g-3">
+                                                <div class="col">
+                                                    <label for="inputEmail4" class="form-label">Nom</label>
+                                                  <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
+                                                </div>
+                                                <div class="col">
+                                                    <label for="inputEmail4" class="form-label">Prenom</label>
+                                                  <input type="text" name="prenom" class="form-control" placeholder="prenom" aria-label="Last name">
+                                                </div>
+                                            </div>
+                                            <div class="row g-3 mt-3">
+                                                <div class="col">
+                                                    <label for="inputEmail4" class="form-label">adresse</label>
+                                                  <input type="text" name="adresse" class="form-control" placeholder="adresse" aria-label="First name">
+                                                </div>
+                                                <div class="col">
+                                                    <label for="inputEmail4" class="form-label">Numero carte d'identite</label>
+                                                  <input type="text" name="cni" class="form-control" placeholder="Numero carte d'identite" aria-label="Last name">
+                                                </div>
+                                              </div>
+                                              <div class="col-12 mt-5">
+                                                <input type="submit" class="btn btn-primary" value="Ajouter le gerant">
+                                              </div>
+                                            </form>
+                                        </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- [ stiped-table ] end -->
 
+                            </div>
 							<!-- [ Main Content ] end -->
 						</div>
 					</div>

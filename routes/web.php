@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GerantController;
+use App\Http\Controllers\StockPouletController;
 use App\Http\Controllers\PoulaillerController;
 use App\Http\Controllers\MaterielController;
 use Illuminate\Support\Facades\Route;
@@ -45,9 +46,24 @@ Route::post('/gerants',[GerantController::class,"store"])->name('Gerant.store');
 Route::get('/gerant/{id}/edit',[GerantController::class,"edit"])->name('Gerant.edit');
 Route::put('/gerant/{id}',[GerantController::class,"update"])->name('Gerant.update');
 Route::delete('/gerant/{id}',[GerantController::class,"destroy"])->name('Gerant.destroy');
+//Route::get('/gerant/dashboard',[GerantController::class,"dash"])->name('Gerant.dash');
 
-Route::get('/dashboard', function () {
+Route::get('/stocksPoulets',[StockPouletController::class,"index"])->name('Stock_poulet.index');
+Route::post('/stocksPoulets',[StockPouletController::class,"store"])->name('Stock_poulet.store');
+Route::get('/stocksPoulets/{id}/edit',[StockPouletController::class,"edit"])->name('Stock_poulet.edit');
+Route::put('/stocksPoulets/{id}',[StockPouletController::class,"update"])->name('Stock_poulet.update');
+Route::delete('/stocksPoulets/{id}',[StockPouletController::class,"destroy"])->name('Stock_poulet.destroy');
+
+Route::get('/produits',[GerantController::class,"index"])->name('Produit.index');
+Route::post('/produits',[ProduitController::class,"store"])->name('Produit.store');
+Route::get('/produits/{id}/edit',[produitController::class,"edit"])->name('Produit.edit');
+Route::put('/produits/{id}',[produitController::class,"update"])->name('Produit.update');
+Route::delete('/produits/{id}',[produitController::class,"destroy"])->name('Produit.destroy');
+
+Route::get('dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+ })->middleware(['auth'])->name('dashboard');
+//Route::get('/dashboard',[DashboardController::class,"dash"])->name('dash');
+
 
 require __DIR__.'/auth.php';

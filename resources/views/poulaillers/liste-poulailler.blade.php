@@ -66,52 +66,7 @@
 									</div>
 								</div>
 							</div>
-							<!-- [ breadcrumb ] end -->
-                            <div class="row">
-                                <div class="col-xl-12">
-                                  <div class="card">
-
-                                      <div class="card-header">
-                                          <h5>Ajout poulailler </h5>
-                                          {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
-                                      </div>
-                                      <div class="card-body table-border-style">
-                                        <div class="card-body">
-                                            <form  action="{{route('Poulaillerstore')}}" method="POST">
-                                                @csrf
-                                                <div class="row g-3">
-                                                    <div class="col">
-                                                        <label class="form-label">Nom</label>
-                                                        <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
-                                                    </div>
-                                                    <div class="col">
-                                                        <label class="form-label">lieu</label>
-                                                        <input type="text" name="lieu" class="form-control" placeholder="lieu" aria-label="Last name">
-                                                        {{-- <input type="hidden" name="gerant_id" value="{{  $gerant->id }}"> --}}
-                                                    </div>
-                                                   <div class="col">
-                                                    <div class="form-group">
-                                                        <label for="exampleFormControlSelect1">le gérant</label>
-                                                        <select class="form-control" id="exampleFormControlSelect1" name='gerant'>
-                                                            @foreach ($gerant as $gerant)
-                                                            <option value="{{$gerant->id}}">{{ $gerant->prenom }}&nbsp;{{ $gerant->nom }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-
-                                              <div class="col-12 mt-5">
-                                                <input type="submit" class="btn btn-primary" value="Ajouter le poulailler">
-                                              </div>
-                                            </form>
-                                        </div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <!-- [ stiped-table ] end -->
-
-                            </div>
+							
 							<!-- [ Main Content ] start -->
 							
                                   <div class="col-xl-12">
@@ -149,7 +104,50 @@
                                     </div>
                                 </div>
                                 <!-- [ stiped-table ] end -->
+                            <!-- [ breadcrumb ] end -->
+                            <div class="row">
+                                <div class="col-xl-12">
+                                  <div class="card">
 
+                                      <div class="card-header">
+                                          <h5>Ajout poulailler </h5>
+                                          {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
+                                      </div>
+                                      <div class="card-body table-border-style">
+                                        <div class="card-body">
+                                            <form  action="{{route('Poulaillerstore')}}" method="POST">
+                                                @csrf
+                                                <div class="row g-3">
+                                                    <div class="col">
+                                                        <label class="form-label">Nom</label>
+                                                        <input type="text" name="nom" class="form-control" placeholder="Nom" aria-label="First name">
+                                                    </div>
+                                                    <div class="col">
+                                                        <label class="form-label">lieu</label>
+                                                        <input type="text" name="lieu" class="form-control" placeholder="lieu" aria-label="Last name">
+                                                        {{-- <input type="hidden" name="gerant_id" value="{{  $gerant->id }}"> --}}
+                                                    </div>
+                                                   <div class="col">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">le gérant</label>
+                                                        <select class="form-control" id="exampleFormControlSelect1" name='gerant'>
+                                                            @foreach ($gerant as $gerant)
+                                                            <option value="{{$gerant->id}}">{{ $gerant->prenom }}&nbsp;{{ $gerant->nom }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                              <div class="col-12 mt-5">
+                                                <input type="submit" class="btn btn-primary" value="Ajouter le poulailler">
+                                              </div>
+                                            </form>
+                                        </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- [ stiped-table ] end -->
+
+                            </div>
 
 
 							<!-- [ Main Content ] end -->

@@ -72,46 +72,104 @@
                                 <div class="col-xl-12">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>liste des produits pharmecitique </h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <button type="button" style="float : rigth;" class="btn btn-outline-primary" title="btn btn-outline-primary" data-toggle="tooltip">Ajouter poulet</button>                                            {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
-                                        </div>
-                                        <div class="card-body table-border-style">
+                                        @foreach ($join as $join)
+                                           <h5>nom poulailler : {{$join->nom}}</h5> 
+                                            <div class="card-body table-border-style">
                                             <div class="table-responsive">
                                                 <table class="table table-striped">
                                                     <thead>
                                                         <tr>
                                                             <th>#</th>
-                                                            <th>Name</th>
-                                                            <th>type</th>
-                                                            <th>date</th>
+                                                            <th>Nombres de poules</th>
+                                                            <th>prix</th>
+                                                            <th>date sortie</th>
+                                                            <th>action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    <!--  -->
                                                         <tr>
-                                                            <td>1</td>
-                                                            <td>Avisen</td>
-                                                            <td>demarrage</td>
-                                                            <td>28-07-2022</td>
+                                                            <td></td>
+                                                            <td>{{$join->nombre_bStock}}</td>
+                                                            <td>{{$join->solde}}</td>
+                                                            <td>{{$join->date_sortie}}</td>
+                                                            <td>
+                                                            <div class="d-flex">
+															    <a class="btn btn-outline-info btn-sm" href="{{ route('Stock_poulet.edit',$join->id) }}">
+                                                                    <i class="fas fa-pencil-alt">
+                                                                    </i>
+                                                                    Modifier
+                                                                </a>
+                                                                
+                                                                <form action="{{ route('Stock_poulet.destroy',$join->id)}}"  method="POST">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
+                                                                    {{-- <i class="fas fa-trash"></i> --}}
+                                                                </form>
+
+															</div>
+
+                                                            </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>Jacob</td>
-                                                            <td>Thornton</td>
-                                                            <td>@fat</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>Larry</td>
-                                                            <td>the Bird</td>
-                                                            <td>@twitter</td>
-                                                        </tr>
+                                                    
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
+                                            @endforeach
+                                           {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <!-- [ stiped-table ] end -->
+                                 <!-- qjouter end -->
+                                    <div class="col-xl-12">
+									<div class="card">
+										<div class="card-header">
+											<h5>Ajout </h5>
+											{{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
+										</div>
+										<div class="card-body table-border-style">
+											<div class="card-body">
+												<form {{-- action="{{route('Stock_poulet.store')}}" --}} method="POST">
+													@csrf
+													<div class="row g-3">
+														<div class="col-lg-6">
+															<label for="inputEmail4" class="form-label">Nombres de poules</label>
+															<input type="number" name="nombre" class="form-control" placeholder="Nombre de poules" aria-label="First name">
+														</div>
+														<div class="col-lg-6">
+															<label for="prix" class="form-label">Prix</label>
+															<input type="number" name="prix" class="form-control" placeholder="prix" aria-label="Last name">
+														</div>
+                                                        <div class="col-lg-6 mt-3">
+															<label for="date" class="form-label">date de sortie</label>
+															<input type="datetime-local" name="date" class="form-control" placeholder="date de sortie" aria-label="Last name">
+														</div>
+														<div class="col-lg-6 mt-3">
+															<div class="form-group">
+																<label for="exampleFormControlSelect1">poulailler</label>
+																<select class="form-control" id="exampleFormControlSelect1" name='poulailler_id'>
+                                                                    
+                                                                @foreach ($poulailler as $poulailler)
+																	    <option value="{{$poulailler->id}}">{{ $poulailler->nom }}</option>
+																    @endforeach
+																   
+																</select>
+															</div>
+														</div>
+													</div>
+													<div class="col-12 mt-5">
+														<input type="submit" class="btn btn-primary" value="Ajouter stock">
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+                              	</div>
+                              <!-- [ stiped-table ] end -->
 							</div>
 
 							<!-- [ Main Content ] end -->

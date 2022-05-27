@@ -14,7 +14,9 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        //
+        $aliment=Produit::select('*')->where('type','=','alimentaire');
+        $pharma=Poulailler::all();
+        return view('produits.liste-produit',compact('aliment','pharma'));
     }
 
     /**
