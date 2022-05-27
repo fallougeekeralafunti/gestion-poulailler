@@ -14,7 +14,7 @@
 
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('/dashboard')}}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Tableau de bord</span></a>
+                    <a href="{{url('/gerant/dashboard')}}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Tableau de bord</span></a>
                 </li>
 
                 <li class="nav-item ">

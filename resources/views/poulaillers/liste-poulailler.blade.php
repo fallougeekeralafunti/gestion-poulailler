@@ -66,7 +66,45 @@
 									</div>
 								</div>
 							</div>
-							<!-- [ breadcrumb ] end -->
+							
+							<!-- [ Main Content ] start -->
+							
+                                  <div class="col-xl-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>liste des poulaillers </h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
+                                        </div>
+                                        <div class="card-body table-border-style">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Nom</th>
+                                                            <th>lieu</th>
+                                                            {{-- <th>Gerant</th> --}}
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($poulailler as $poulailler)
+                                                        <tr>
+                                                            <td>{{$poulailler->id}}</td>
+                                                            <td>{{$poulailler->nom}}</td>
+                                                            <td>{{$poulailler->lieu}}</td>
+                                                          {{--   <td>{{$poulailler->nom}}</td> --}}
+                                                        </tr>
+                                                        @endforeach
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- [ stiped-table ] end -->
+                            <!-- [ breadcrumb ] end -->
                             <div class="row">
                                 <div class="col-xl-12">
                                   <div class="card">
@@ -99,8 +137,6 @@
                                                         </select>
                                                     </div>
                                                 </div>
-
-
                                               <div class="col-12 mt-5">
                                                 <input type="submit" class="btn btn-primary" value="Ajouter le poulailler">
                                               </div>
@@ -112,6 +148,8 @@
                               <!-- [ stiped-table ] end -->
 
                             </div>
+<<<<<<< HEAD
+=======
 							<!-- [ Main Content ] start -->
 
                                   <div class="col-xl-12">
@@ -165,6 +203,7 @@
                                 </div>
                                 <!-- [ stiped-table ] end -->
 
+>>>>>>> db7a26e2b29b910a44725d199aebbdf59f5b3e94
 
 
 							<!-- [ Main Content ] end -->

@@ -98,6 +98,7 @@ class MaterielController extends Controller
      */
     public function destroy($id)
     {
+        
         $del=Materiel::find($id);
         $del->delete();
         return redirect()->route('Materiel.index')->with('success', 'Supprimer avec succèss');

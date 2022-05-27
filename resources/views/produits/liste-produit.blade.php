@@ -76,6 +76,9 @@
 											<div class="row align-items-center justify-content-center">
 												<div class="col text-right">
 													<h3>25 Sacs</h3>
+                                                    @foreach($pharma as $al)
+                                                    <h1>{{$al->nom}}</h1>
+                                                    @endforeach
 													<h5 class="text-c-blue mb-0"><span class="text-muted">Aliment de Croissance</span></h5>
                                                     <h6 class="text-c-blue  m-b-10"><span class="text-muted m-r-5">Durée:</span>15 jours</h6>
 												</div>

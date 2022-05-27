@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gerant;
+use App\Models\Poulailler;
+use App\Models\Materiel;
 use Illuminate\Http\Request;
 
 class GerantController extends Controller
@@ -20,7 +22,13 @@ class GerantController extends Controller
         /*  $Gerant = Gerant::all();
         return view('liste-gerant',compact('Gerant')); */
     }
-
+    /** */
+    // public function dash()
+    // {
+    //     $materiel=Materiel::all();
+    //     $poulailler= Poulailler::all();
+    //     return view('gerant.dashboard',compact('materiel','poulailler')); // lister tout les materiels
+    // }
     /**
      * Show the form for creating a new resource.
      *
