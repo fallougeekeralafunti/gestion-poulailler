@@ -16,7 +16,7 @@ class PoulaillerController extends Controller
      */
     public function index()
     {
-        $poulailler = Poulailler::join('gerants','gerants.id','=','poulaillers.gerant_id')->get();
+        $poulailler = Poulailler::all();
         $gerant = Gerant::all();
         /* $poulailler = DB::table('gerants')
                         ->join('poulailler','gerant.id','=','poulailler.gerant_id')
@@ -72,9 +72,12 @@ class PoulaillerController extends Controller
      * @param  \App\Models\Poulailler  $poulailler
      * @return \Illuminate\Http\Response
      */
-    public function edit(Poulailler $poulailler)
+    public function edit(Poulailler $poulailler,$id)
     {
-        //
+        //$poulailler = Poulailler::join('gerants','gerants.id','=','poulaillers.gerant_id')->get();
+        $gerant = Gerant::all();
+        $poulailler = Poulailler::find($id);
+        return view('poulaillers.modifier-poulailler',compact('poulailler','gerant'));
     }
 
     /**
@@ -84,9 +87,15 @@ class PoulaillerController extends Controller
      * @param  \App\Models\Poulailler  $poulailler
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Poulailler $poulailler)
+    public function update(Request $request, Poulailler $poulailler,$id)
     {
-        //
+        Poulailler::where('id','=',$request->id)->update([
+            //'id'=>$id,
+            'nom' => $request->nom,
+            'lieu' => $request->lieu,
+            'gerant_id' => $request->gerant_id,
+        ]);
+        return redirect()->route('Poulailler.index')->with('success', 'mise à jour avec succèss');
     }
 
     /**
@@ -95,8 +104,19 @@ class PoulaillerController extends Controller
      * @param  \App\Models\Poulailler  $poulailler
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Poulailler $poulailler)
+    public function destroy($id)
     {
-        //
+        $post =Poulailler::find($id);
+
+       /*  if ($post != null) {
+            $post->delete();
+        } */
+
+
+        //$doss = Poulailler::find();
+        //ddd($doss);
+        $post->delete();
+        return redirect()->route('Poulailler.index')->with('success', 'Supprimer avec succèss');
+
     }
 }

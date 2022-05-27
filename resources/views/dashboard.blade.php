@@ -132,7 +132,7 @@
 									</div>
 								</div>
 
-								<div class="col-xl-8 col-md-6">
+								<div class="col-xl-12 col-md-6">
 									<div class="card table-card">
 										<div class="card-header">
 											<h5>liste stocke poulets</h5>
@@ -150,7 +150,7 @@
 																<th><span>prix total </span></th>
                                                                 <th><span>prix unitaire</span></th>
 																<th><span>prix total </span></th>
-
+                                                                <th><span>prix total </span></th><th><span>prix total </span></th>
 															</tr>
 														</thead>
 														<tbody>
@@ -181,14 +181,14 @@
 									</div>
 								</div>
 								<!-- sessions-section end -->
-								<div class="col-md-6 col-xl-4">
+								{{-- <div class="col-md-6 col-xl-4">
 									<div class="card user-card">
 										<div class="card-header">
 											<h5>Profile</h5>
 										</div>
 										<div class="card-body  text-center">
 											<div class="usre-image">
-												<img src="../assets/images/widget/img-round1.jpg" class="img-radius wid-100 m-auto" alt="User-Profile-Image">
+												<img src="../assets/images/widget/img-round1.png " class="img-radius wid-100 m-auto" alt="User-Profile-Image">
 											</div>
 											<h6 class="f-w-600 m-t-25 m-b-10">power-éleveur</h6>
 											<p>Thies | Sampathe | Rue 26</p>
@@ -219,7 +219,7 @@
 											</div>
 										</div>
 									</div>
-								</div>
+								</div> --}}
 							</div>
 
 							<!-- [ Main Content ] end -->
