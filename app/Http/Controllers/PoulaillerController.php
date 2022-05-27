@@ -16,7 +16,7 @@ class PoulaillerController extends Controller
      */
     public function index()
     {
-        $poulailler = Poulailler::join('gerants','gerants.id','=','poulaillers.gerant_id')->get();
+        $poulailler = Poulailler::all();
         $gerant = Gerant::all();
         /* $poulailler = DB::table('gerants')
                         ->join('poulailler','gerant.id','=','poulailler.gerant_id')
@@ -106,7 +106,7 @@ class PoulaillerController extends Controller
      */
     public function destroy($id)
     {
-        $post =Poulailler::where('id',$id)->find();
+        $post =Poulailler::find($id);
 
        /*  if ($post != null) {
             $post->delete();

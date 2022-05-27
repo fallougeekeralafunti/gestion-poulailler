@@ -4,8 +4,8 @@
 		<div class="m-header">
 			<a class="mobile-menu" id="mobile-collapse1" href="#!"><span></span></a>
 			<a href="index.html" class="b-brand">
-				<img src="../assets/images/logo.svg" alt="" class="logo images">
-				<img src="../assets/images/logo-icon.svg" alt="" class="logo-thumb images">
+				<img src="" alt="" class="logo images">
+				<img src="" alt="" class="logo-thumb images">Registre
 			</a>
 		</div>
 		<a class="mobile-menu" id="mobile-header" href="#!">
@@ -37,7 +37,7 @@
 							<ul class="pro-body">
 								<li> <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                   
+
                                     <x-responsive-nav-link :href="route('logout')"
                                             onclick="event.preventDefault();
                                                         this.closest('form').submit();">
