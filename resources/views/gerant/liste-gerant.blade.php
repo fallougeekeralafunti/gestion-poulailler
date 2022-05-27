@@ -138,6 +138,7 @@
                                                             <td>{{$gerant->adresse}}</td>
                                                             <td>{{$gerant->cni}}</td>
                                                             <td >
+                                                                <div class="d-flex">
                                                                 <a class="btn btn-outline-info btn-sm" href="{{ route('Gerant.edit',$gerant->id) }}">
                                                                     <i class="fas fa-pencil-alt">
                                                                     </i>
@@ -149,7 +150,7 @@
                                                                     <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
                                                                     {{-- <i class="fas fa-trash"></i> --}}
                                                                 </form>
-
+                                                            </div>
                                                             </td>
                                                         </tr>
                                                         @endforeach
