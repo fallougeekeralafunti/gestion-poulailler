@@ -18,11 +18,6 @@ class PoulaillerController extends Controller
     {
         $poulailler = Poulailler::all();
         $gerant = Gerant::all();
-        /* $poulailler = DB::table('gerants')
-                        ->join('poulailler','gerant.id','=','poulailler.gerant_id')
-                        ->select('gerants.nom as NomGerant','poulailler.nom as NomPoulailler')
-                        ->get();
-                    ddd($poulailler); */
         return view('poulaillers.liste-poulailler',compact('poulailler','gerant'));
     }
 

@@ -23,12 +23,11 @@ class GerantController extends Controller
         return view('liste-gerant',compact('Gerant')); */
     }
     /** */
-    // public function dash()
-    // {
-    //     $materiel=Materiel::all();
-    //     $poulailler= Poulailler::all();
-    //     return view('gerant.dashboard',compact('materiel','poulailler')); // lister tout les materiels
-    // }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     /**
      * Show the form for creating a new resource.
      *

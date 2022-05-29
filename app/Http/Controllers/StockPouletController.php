@@ -15,10 +15,9 @@ class StockPouletController extends Controller
      */
     public function index()
     {
-        $join=Stock_poulet::all();
-        $poulailler=Poulailler::all();
-        $stock=Stock_poulet::join('poulaillers','poulaillers.id','=','Stock_poulets.poulailler_id')->get();
-        return view('stock-poules.liste-stock',compact('join','poulailler'));
+        $stock_poulets=Stock_poulet::all();
+        $poulailler= Poulailler::all();
+        return view('stock-poules.liste-stock',compact('stock_poulets','poulailler'));
     }
 
     /**
@@ -41,7 +40,7 @@ class StockPouletController extends Controller
     {
         $stock=Stock_poulet::create([
             'id'=>$request->id,
-            'nombre_bStock'=>$request->nombre,
+            'nombre_bStock'=>$request->nombre_bStock,
             'solde'=>$request->prix,
             'date_sortie'=>$request->date,
             'poulailler_id'=>$request->poulailler_id,
@@ -68,8 +67,10 @@ class StockPouletController extends Controller
      */
     public function edit(Stock_poulet $stock_poulet,$id)
     {
-        $stock=Stock_poulet::find($id);
-        return view('stock-poules.modifier-stock',compact('stock'));
+        $stock_poulet = Stock_poulet::join('poulaillers','stock_poulets.poulailler_id','=','poulaillers.id');
+        $stock_poulet=Stock_poulet::find($id);
+        $poulailler = Poulailler::all();
+        return view('stock-poules.modifier-stock',compact('stock_poulet','poulailler'));
     }
 
     /**
@@ -81,14 +82,13 @@ class StockPouletController extends Controller
      */
     public function update(Request $request, Stock_poulet $stock_poulet,$id)
     {
-        Stock_poulet::where('id','=',$id)->update([
-            'id'=>$request->id,
-            'nombre_bStock'=>$request->nombre,
-            'solde'=>$request->prix,
-            'date_sortie'=>$request->date,
-            'poulailler_id'=>$request->poulailler_id,
-        ]);
-        return redirect()->route('Stock_poulet.index')->with('success', 'mise à jour avec succèss');
+        $stock=Stock_poulet::find($id);
+        $stock->nombre_bStock=$request->nombre_bStock;
+        $stock->solde=$request->prix;
+        $stock->date_sortie=$request->date;
+        $stock->poulailler_id=$request->poulailler_id;
+        $stock->save();
+        return redirect()->route('Stock_poulet.index')->withSuccess(__('Enregistrer avec succes.'));
     }
 
     /**
@@ -99,7 +99,7 @@ class StockPouletController extends Controller
      */
     public function destroy(Stock_poulet $stock_poulet,$id)
     {
-         
+
         $del=Stock_poulet::find($id);
         $del->delete();
         return redirect()->route('Stock_poulet.index')->with('success', 'Supprimer avec succèss');

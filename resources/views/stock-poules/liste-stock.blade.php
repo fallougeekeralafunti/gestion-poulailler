@@ -72,8 +72,8 @@
                                 <div class="col-xl-12">
                                     <div class="card">
                                         <div class="card-header">
-                                        @foreach ($join as $join)
-                                           <h5>nom poulailler : {{$join->nom}}</h5> 
+
+                                           <h5>nom poulailler : {{--  --}}</h5>
                                             <div class="card-body table-border-style">
                                             <div class="table-responsive">
                                                 <table class="table table-striped">
@@ -87,40 +87,31 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <!--  -->
+                                                        @foreach ($stock_poulets as $stock_poulet)
                                                         <tr>
-                                                            <td></td>
-                                                            <td>{{$join->nombre_bStock}}</td>
-                                                            <td>{{$join->solde}}</td>
-                                                            <td>{{$join->date_sortie}}</td>
+                                                            <td>{{$stock_poulet->id}}</td>
+                                                            <td>{{$stock_poulet->nombre_bStock}}</td>
+                                                            <td>{{$stock_poulet->solde}}</td>
+                                                            <td>{{$stock_poulet->date_sortie}}</td>
                                                             <td>
-                                                            <div class="d-flex">
-															    <a class="btn btn-outline-info btn-sm" href="{{ route('Stock_poulet.edit',$join->id) }}">
-                                                                    <i class="fas fa-pencil-alt">
-                                                                    </i>
-                                                                    Modifier
-                                                                </a>
-                                                                
-                                                                <form action="{{ route('Stock_poulet.destroy',$join->id)}}"  method="POST">
+                                                                <div class="d-flex">
+                                                                <a href="{{route('Stock_poulet.edit',$stock_poulet->id)}}" class="btn btn-primary">Modifier</a>
+                                                                <form action="{{route('Stock_poulet.destroy',$stock_poulet->id)}}" method="POST">
                                                                     @csrf
-                                                                    @method('delete')
-                                                                    <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
-                                                                    {{-- <i class="fas fa-trash"></i> --}}
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger">Supprimer</button>
                                                                 </form>
-
-															</div>
-
+                                                               </div>
                                                             </td>
-                                                        </tr>
-                                                    
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
-                                            @endforeach
+
                                            {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <!-- [ stiped-table ] end -->
@@ -138,7 +129,7 @@
 													<div class="row g-3">
 														<div class="col-lg-6">
 															<label for="inputEmail4" class="form-label">Nombres de poules</label>
-															<input type="number" name="nombre" class="form-control" placeholder="Nombre de poules" aria-label="First name">
+															<input type="number" name="nombre_bStock" class="form-control" placeholder="Nombre de poules" aria-label="First name">
 														</div>
 														<div class="col-lg-6">
 															<label for="prix" class="form-label">Prix</label>
@@ -152,11 +143,11 @@
 															<div class="form-group">
 																<label for="exampleFormControlSelect1">poulailler</label>
 																<select class="form-control" id="exampleFormControlSelect1" name='poulailler_id'>
-                                                                    
-                                                                @foreach ($poulailler as $poulailler)
+
+                                                                  @foreach ($poulailler as $poulailler)
 																	    <option value="{{$poulailler->id}}">{{ $poulailler->nom }}</option>
 																    @endforeach
-																   
+
 																</select>
 															</div>
 														</div>

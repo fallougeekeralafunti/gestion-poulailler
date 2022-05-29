@@ -77,31 +77,34 @@
                                       </div>
                                       <div class="card-body table-border-style">
                                         <div class="card-body">
-                                            <form action="{{route('Stock_poulet.update',$stock->id)}}" method="POST">
+                                            <form action="{{route('Stock_poulet.update',$stock_poulet->id)}}" method="POST">
                                                 @csrf
                                                 @method('put')
                                             <div class="row g-3">
                                                 <div class="col-lg-6">
                                                     <label for="inputEmail4" class="form-label">Nombre de poulets</label>
-                                                  <input type="number" name="nombre" value="{{$stock->nombre_bStock}}" class="form-control" placeholder="Nombre de poulets" aria-label="First name">
+                                                  <input type="number" name="nombre_bStock" value="{{$stock_poulet->nombre_bStock}}" class="form-control" placeholder="Nombre de poulets" aria-label="First name">
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <label for="inputEmail4"  class="form-label">prix</label>
-                                                  <input type="number" name="prix" value="{{$stock->solde}}" class="form-control" placeholder="prix" aria-label="Last name">
+                                                  <input type="number" name="prix" value="{{$stock_poulet->solde}}" class="form-control" placeholder="prix" aria-label="Last name">
                                                 </div>
 												<div class="col-lg-6">
                                                     <label for="inputEmail4"  class="form-label">date sortie</label>
-                                                  <input type="text" name="date" value="{{$stock->date_sortie}}" class="form-control" placeholder="date sortie" aria-label="Last name">
+                                                  <input type="text" name="date" value="{{$stock_poulet->date_sortie}}" class="form-control" placeholder="date sortie" aria-label="Last name">
                                                 </div>
-                                            </div>
-                                            <!-- <div class="row g-3 mt-3">
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlSelect1">poulailler</label>
-                                                        <input type="text" name="poulailler" value="{{$stock->nom}}" class="form-control" placeholder="poulailler" aria-label="Last name"> 
+                                                        <select class="form-control" name="poulailler_id" id="exampleFormControlSelect1">
+                                                            @foreach ($poulailler as $poulailler)
+                                                                <option value="{{$poulailler->id}}">{{$poulailler->nom}}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
-                                            </div> -->
+                                            </div>
+                                           <div class="col-lg-6"></div>
                                               <div class="col-12 mt-5">
                                                 <input type="submit" class="btn btn-primary" value="Modifier information">
                                               </div>
