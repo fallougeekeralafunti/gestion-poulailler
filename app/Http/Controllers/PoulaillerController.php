@@ -74,7 +74,7 @@ class PoulaillerController extends Controller
      */
     public function edit(Poulailler $poulailler,$id)
     {
-        //$poulailler = Poulailler::join('gerants','gerants.id','=','poulaillers.gerant_id')->get();
+        $poulailler = Poulailler::join('gerants','gerants.id','=','poulaillers.gerant_id')->get();
         $gerant = Gerant::all();
         $poulailler = Poulailler::find($id);
         return view('poulaillers.modifier-poulailler',compact('poulailler','gerant'));

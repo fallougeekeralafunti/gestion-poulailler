@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produit;
+use App\Models\Poulailler;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -14,9 +15,8 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $aliment=Produit::select('*')->where('type','=','alimentaire');
-        $pharma=Poulailler::all();
-        return view('produits.liste-produit',compact('aliment','pharma'));
+        $produits = Produit::all();
+        return view('produits.liste-produit',compact('produits'));
     }
 
     /**

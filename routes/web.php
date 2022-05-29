@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 /* Route::resource('contrat','AjouterContratController');
- */Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/produits', function () {
+ */Route::get('/', function () { return view('welcome');});
+
+
+/* Route::get('/produits', function () {
     return view('produits.liste-produit');
 });
 Route::get('/stocksPoulets', function () {
@@ -28,7 +28,7 @@ Route::get('/stocksPoulets', function () {
 });
 Route::get('/materiels', function () {
     return view('materiels.liste-materiel');
-});
+}); */
 Route::get('/materiels',[MaterielController::class,"index"])->name('Materiel.index');
 Route::post('/materiels',[MaterielController::class,"store"])->name('Materiel.store');
 Route::get('/materiels/{id}/edit',[MaterielController::class,"edit"])->name('Materiel.edit');

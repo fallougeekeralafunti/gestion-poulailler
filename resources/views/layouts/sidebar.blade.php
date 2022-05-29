@@ -14,14 +14,14 @@
 
                 </li>
                 <li class="nav-item">
-                    <a href="{{url('/gerant/dashboard')}}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Tableau de bord</span></a>
+                    <a href="{{url('dashboard')}}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Tableau de bord</span></a>
                 </li>
 
                 <li class="nav-item ">
                     <a href="{{url('stocksPoulets')}}" class="nav-link"><span class="pcoded-micon"><i class="fas fa-layer-group"></i></span><span class="pcoded-mtext">stocks poules</span></a>
                 </li>
                 <li class="nav-item ">
-                    <a href="{{url('produits')}}" class="nav-link"><span class="pcoded-micon"><i class="fas fa-utensils"></i></span><span class="pcoded-mtext">Produits</span></a>
+                    <a href="{{route('Produit.index')}}" class="nav-link"><span class="pcoded-micon"><i class="fas fa-utensils"></i></span><span class="pcoded-mtext">Produits</span></a>
                 </li>
                 <li class="nav-item ">
                     <a href="{{route('Poulailler.index')}}" class="nav-link"><span class="pcoded-micon"><i class="far fa-building"></i></span><span class="pcoded-mtext">Poulaillers</span></a>

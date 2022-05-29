@@ -66,9 +66,9 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<!-- [ Main Content ] start -->
-							
+
                                   <div class="col-xl-12">
                                     <div class="card">
                                         <div class="card-header">
@@ -83,6 +83,7 @@
                                                             <th>#</th>
                                                             <th>Nom</th>
                                                             <th>lieu</th>
+                                                            <th>action</th>
                                                             {{-- <th>Gerant</th> --}}
                                                         </tr>
                                                     </thead>
@@ -92,6 +93,15 @@
                                                             <td>{{$poulailler->id}}</td>
                                                             <td>{{$poulailler->nom}}</td>
                                                             <td>{{$poulailler->lieu}}</td>
+                                                            <td>
+                                                                <div class="d-flex">
+                                                                <a href="{{route('Poulailler.edit',$poulailler->id)}}" class="btn btn-primary">Modifier</a>
+                                                                <form action="{{route('Poulailler.destroy',$poulailler->id)}}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                                </form>
+                                                            </div>
                                                           {{--   <td>{{$poulailler->nom}}</td> --}}
                                                         </tr>
                                                         @endforeach
@@ -148,62 +158,6 @@
                               <!-- [ stiped-table ] end -->
 
                             </div>
-<<<<<<< HEAD
-=======
-							<!-- [ Main Content ] start -->
-
-                                  <div class="col-xl-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>liste des poulaillers </h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
-                                        </div>
-                                        <div class="card-body table-border-style">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Nom</th>
-                                                            <th>lieu</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($poulailler as $poulailler)
-                                                        <tr>
-                                                            <td>{{$poulailler->id}}</td>
-                                                            <td>{{$poulailler->nom}}</td>
-                                                            <td>{{$poulailler->lieu}}</td>
-                                                            <td>
-                                                                <div class="d-flex">
-                                                                    <a class="btn btn-outline-info btn-sm" href="{{ route('Poulailler.edit',$poulailler->id) }}">
-                                                                            <i class="fas fa-pencil-alt">
-                                                                            </i>
-                                                                            Modifier
-                                                                        </a>
-                                                                        <form action= "{{ route('Poulailler.destroy',$poulailler->id)}} "  method="POST">
-                                                                            @csrf
-                                                                            @method('DELETE')
-                                                                            <input type="submit" class="btn btn-danger btn-sm" value="Supprimer">
-                                                                            {{-- <i class="fas fa-trash"></i> --}}
-                                                                        </form>
-
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
-
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- [ stiped-table ] end -->
-
->>>>>>> db7a26e2b29b910a44725d199aebbdf59f5b3e94
 
 
 							<!-- [ Main Content ] end -->
@@ -219,7 +173,7 @@
 	<!-- Required Js -->
 	<script src="{{asset('assets/js/vendor-all.min.js')}}"></script>
 	<script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-	<script src="{{asset('assets/js/pcoded.min.js')}}"></script>
+	{{-- <script src="{{asset('assets/js/pcoded.min.js')}}"></script> --}}
 
 </body>
 

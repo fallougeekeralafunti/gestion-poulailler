@@ -68,8 +68,10 @@ class MaterielController extends Controller
      */
     public function edit(Materiel $materiel, $id)
     {
-        $materiel=Materiel::find($id);
-        return view('materiels.modifier-materiel',compact('materiel'));
+        $materiel = Materiel::join('poulaillers','poulaillers.id','=','materiels.poulailler_id')->get();
+        $materiel = Materiel::find($id);
+        $poulailler = Poulailler::all();
+        return view('materiels.modifier-materiel',compact('materiel','poulailler'));
     }
 
     /**
@@ -81,12 +83,11 @@ class MaterielController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Materiel::where('id','=',$id)->update([
-            'id'=>$request->id,
-            'nom'=>$request->nom,
-            'prix'=>$request->prix,
-            'poulailler_id'=>$request->poulailler_id,
-        ]);
+        $materiel=Materiel::find($id);
+        $materiel->nom=$request->nom;
+        $materiel->prix=$request->prix;
+        $materiel->poulailler_id=$request->poulailler_id;
+        $materiel->save();
         return redirect()->route('Materiel.index')->with('success', 'mise à jour avec succèss');
     }
 
@@ -98,7 +99,7 @@ class MaterielController extends Controller
      */
     public function destroy($id)
     {
-        
+
         $del=Materiel::find($id);
         $del->delete();
         return redirect()->route('Materiel.index')->with('success', 'Supprimer avec succèss');

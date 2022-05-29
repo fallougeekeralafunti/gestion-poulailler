@@ -89,15 +89,22 @@ class GerantController extends Controller
      */
     public function update(Request $request, $id)
     {
-         Gerant::where('id','=',$id)->update([
+        /*  Gerant::where('id','=',$request->id)->update([
             'id'=>$id,
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'adresse' => $request->adresse,
             'cni' => $request->cni,
 
-        ]);
-        return redirect()->route('Gerant.index')->with('success', 'mise à jour avec succèss');
+        ]); */
+        $gerant=Gerant::find($id);
+        $gerant->nom = $request->nom;
+        $gerant->prenom = $request->prenom;
+        $gerant->adresse = $request->adresse;
+        $gerant->cni = $request->cni;
+        $gerant->save();
+        return redirect()->route('Gerant.index')->withSuccess(__('Modifier avec succes.'));
+       // return redirect()->route('Gerant.index')->with('success', 'mise à jour avec succèss');
     }
 
     /**
@@ -114,3 +121,4 @@ class GerantController extends Controller
         return redirect()->route('Gerant.index')->with('success', 'Supprimer avec succèss');
     }
 }
+

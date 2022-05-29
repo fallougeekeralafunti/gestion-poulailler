@@ -72,7 +72,7 @@
                                   <div class="card">
 
                                       <div class="card-header">
-                                          <h5>Ajout de gerants </h5>
+                                          <h5>Modification du matériel </h5>
                                           {{-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> --}}
                                       </div>
                                       <div class="card-body table-border-style">
@@ -94,12 +94,16 @@
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlSelect1">poulailler</label>
-                                                        <input type="text" name="poulailler" value="{{$materiel->poulailler_id}}" class="form-control" placeholder="poulailler" aria-label="Last name"> 
+                                                        <select class="form-control" name="poulailler_id" id="exampleFormControlSelect1">
+                                                            @foreach ($poulailler as $poulailler)
+                                                                <option value="{{$poulailler->id}}">{{$poulailler->nom}}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                               <div class="col-12 mt-5">
-                                                <input type="submit" class="btn btn-primary" value="Modifie ;ateriel">
+                                                <input type="submit" class="btn btn-primary" value="Modification du matériel">
                                               </div>
                                             </form>
                                         </div>
