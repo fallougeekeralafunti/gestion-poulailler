@@ -15,8 +15,9 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $produits = Produit::all();
-        return view('produits.liste-produit',compact('produits'));
+        $produit=Produit::all();
+        $poulailler= Poulailler::all();
+        return view('produits.liste-produit',compact('produit','poulailler')); // lister tout les produits
     }
 
     /**
@@ -38,12 +39,12 @@ class ProduitController extends Controller
     public function store(Request $request)
     {
         $produit= Produit::create([
-            'id' => $request->id,
-            'nom' => $request->nom,
-            'prix' => $request->prix,
-            'quantite' => $request->quantite,
-            'type' => $request->type,
-            'poulailler' => $request->cni,
+           'id'=>$request->id,
+            'nom'=>$request->nom,
+            'prix'=>$request->prix,
+            'quantite'=>$request->quantite,
+            'type'=>$request->type,
+            'poulailler_id'=>$request->poulailler_id,
         ]);
         return redirect()->route('Produit.index')->withSuccess(__('Enregistrer avec succes.'));
     }
@@ -67,8 +68,10 @@ class ProduitController extends Controller
      */
     public function edit(Produit $produit,$id)
     {
+        $produit = Produit::join('poulaillers','poulaillers.id','=','produits.poulailler_id');
         $produit = Produit::find($id);
-        return view('produit.modifier-produit',compact('produit'));
+        $poulailler = Poulailler::all();
+        return view('produits.modifier-produit',compact('produit','poulailler'));
     }
 
     /**
@@ -89,8 +92,11 @@ class ProduitController extends Controller
      * @param  \App\Models\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produit $produit)
+    public function destroy(Produit $produit,$id)
     {
-        //
+        $produit = Produit::find($id);
+        $produit->delete();
+        return redirect()->route('Produit.index')->withSuccess(__('Supprimer avec succes.'));
     }
+
 }

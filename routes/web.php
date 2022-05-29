@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\GerantController;
-use App\Http\Controllers\StockPouletController;
-use App\Http\Controllers\PoulaillerController;
-use App\Http\Controllers\MaterielController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GerantController;
+use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\MaterielController;
+use App\Http\Controllers\PoulaillerController;
+use App\Http\Controllers\StockPouletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/* Route::resource('contrat','AjouterContratController');
- */Route::get('/', function () { return view('welcome');});
-
-
+// Route::resource('contrat','AjouterContratController');
+Route::get('/', function () { return view('welcome');});
 /* Route::get('/produits', function () {
     return view('produits.liste-produit');
 });
@@ -56,7 +55,7 @@ Route::get('/stocksPoulets/{id}/edit',[StockPouletController::class,"edit"])->na
 Route::put('/stocksPoulets/{id}',[StockPouletController::class,"update"])->name('Stock_poulet.update');
 Route::delete('/stocksPoulets/{id}',[StockPouletController::class,"destroy"])->name('Stock_poulet.destroy');
 
-Route::get('/produits',[GerantController::class,"index"])->name('Produit.index');
+Route::get('/produits',[ProduitController::class,"index"])->name('Produit.index');
 Route::post('/produits',[ProduitController::class,"store"])->name('Produit.store');
 Route::get('/produits/{id}/edit',[produitController::class,"edit"])->name('Produit.edit');
 Route::put('/produits/{id}',[produitController::class,"update"])->name('Produit.update');
