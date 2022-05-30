@@ -83,7 +83,7 @@
                                             <div class="row g-3">
                                                 <div class="col-lg-6">
                                                     <label for="inputEmail4" class="form-label">Nom</label>
-                                                  <input type="number" name="nom" value="{{$produit->nom}}" class="form-control" placeholder="Nom" aria-label="Nom">
+                                                  <input type="text" name="nom" value="{{$produit->nom}}" class="form-control" placeholder="Nom" aria-label="Nom">
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <label for="inputEmail4"  class="form-label">prix</label>
@@ -91,11 +91,11 @@
                                                 </div>
 												<div class="col-lg-6">
                                                     <label for="inputEmail4"  class="form-label">Quantite</label>
-                                                  <input type="text" name="quantite" value="{{$produit->quantite}}" class="form-control" placeholder="quantite" aria-label="Last name">
+                                                  <input type="number" name="quantite" value="{{$produit->quantite}}" class="form-control" placeholder="quantite" aria-label="Last name">
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <label for="inputEmail4"  class="form-label">type</label>
-                                                  <input type="text" name="type" value="{{$produit->quantite}}" class="form-control" placeholder="type" aria-label="Last name">
+                                                  <input type="text" name="type" value="{{$produit->type}}" class="form-control" placeholder="type" aria-label="Last name">
                                                 </div>
                                             </div>
                                             <div class="row g-3 mt-3">

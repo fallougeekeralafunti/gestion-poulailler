@@ -81,9 +81,16 @@ class ProduitController extends Controller
      * @param  \App\Models\Produit  $produit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produit $produit)
+    public function update(Request $request, Produit $produit,$id)
     {
-        //
+        $produit = Produit::find($id);
+        $produit->nom = $request->nom;
+        $produit->prix = $request->prix;
+        $produit->quantite = $request->quantite;
+        $produit->type = $request->type;
+        $produit->poulailler_id = $request->poulailler_id;
+        $produit->save();
+        return redirect()->route('Produit.index')->withSuccess(__('Modifier avec succes.'));
     }
 
     /**
